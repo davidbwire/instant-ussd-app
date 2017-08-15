@@ -5,6 +5,11 @@
             "url": "ssh://git@bitbucket.org/davidbwire/instant-ussd.git"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "InstantUssd\\": "./"
+        }
+    },
     "require": {
         "php": "^5.6 || ^7.0",
         "bitmarshals/instant-ussd": "dev-master"
