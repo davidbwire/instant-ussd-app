@@ -4,9 +4,9 @@ namespace InstantUssd;
 
 use Bitmarshals\InstantUssd\InstantUssd;
 use Zend\Http\PhpEnvironment\Response;
-use Bitmarshals\InstantUssd\UssdValidator;
 use Bitmarshals\InstantUssd\UssdMenuItem;
 use Bitmarshals\InstantUssd\UssdService;
+use InstantUssd\UssdValidator;
 
 /**
  * Description of UssdController
