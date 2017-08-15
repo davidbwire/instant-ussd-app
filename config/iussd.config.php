@@ -22,9 +22,9 @@ return [
         ],
         'ussd_menus' => [
             "home_instant_ussd" => [
-                "menu_title" => "Welcome to InstantUssd",
+                "title" => "Welcome to InstantUssd",
                 "is_skippable" => false,
-                "menu_footer" => "Questions? Call +254712688559",
+                "footer" => "Questions? Call +254712688559",
                 "menu_items_ranking_type" => UssdMenuConfig::RANKING_TYPE_PREDETERMINED,
                 "valid_values" => range(1, 2),
                 "loopset_name" => "",
