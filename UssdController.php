@@ -26,7 +26,7 @@ class UssdController {
         // the framework's recommended config file
         $config            = require_once './config/iussd.config.php';
         $instantUssdConfig = $config['instant_ussd'];
-        $instantUssd       = new InstantUssd($instantUssdConfig);
+        $instantUssd       = new InstantUssd($instantUssdConfig, $this);
         $ussdService       = $instantUssd->getUssdService();
         $eventManager      = $ussdService->getEventManager();
 
