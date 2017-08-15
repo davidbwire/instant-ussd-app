@@ -2,7 +2,7 @@
 
 ## About InstantUssd
 
-InstantUssd is a USSD development library.
+InstantUssd is USSD development library distributed as <code>bitmarshals/instant-ussd</code> composer package. This project recommends a file structure for incorporating <code>bitmarshals/instant-ussd</code> package to your code.
 
 Requirements
 ------------
