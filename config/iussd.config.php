@@ -2,6 +2,7 @@
 
 use Bitmarshals\InstantUssd\Mapper;
 use Bitmarshals\InstantUssd\UssdMenuConfig;
+use InstantUssd\UssdEventListener;
 
 return [
     "instant_ussd" => [

@@ -1,5 +1,7 @@
 <?php
 
+namespace InstantUssd;
+
 use Bitmarshals\InstantUssd\UssdEventListener as InstantUssdEventListener;
 use Bitmarshals\InstantUssd\UssdEvent;
 
