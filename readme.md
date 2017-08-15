@@ -35,7 +35,7 @@ $ composer install
 
 Finally, import instant ussd tables from [database.sql](config/database.sql) file and then add database connection params to the  [config file](config/iussd.config.php).
 
-<b>Note</b> You may opt to use your own namespace instead of <code>namespace InstantUssd;</code> provided for [UssdEventListener.php](UssdEventListener.php), [UssdValidator.php](UssdValidator.php) and [UssdController.php](UssdController.php). If you do, remember to reference <code>UssdEventListener.php</code>, <code>UssdValidator.php</code> & <code>UssdController.php</code> correctly from the [config](config/iussd.config.php#L5), [UssdController.php](UssdController.php#L9) and [index.php](index.php) files respectively. Also update the psr-4 section of [composer.json](composer.json) file.
+<b>Note</b> You may opt to use your own namespace instead of <code>namespace InstantUssd;</code> provided for [UssdEventListener.php](UssdEventListener.php), [UssdValidator.php](UssdValidator.php) and [UssdController.php](UssdController.php). If you do, remember to reference <code>UssdEventListener.php</code>, <code>UssdValidator.php</code> & <code>UssdController.php</code> correctly from [iussd.config.php](config/iussd.config.php), [UssdController.php](UssdController.php) and [index.php](index.php) files respectively. Also update the psr-4 section of [composer.json](composer.json) file.
 
 ## License
 
