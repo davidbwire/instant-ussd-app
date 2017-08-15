@@ -36,7 +36,7 @@ $ composer require bitmarshals/instant-ussd:dev-master
 
 Finally, import instant ussd tables from [database.sql](config/database.sql) file.
 
-<b>Note</b> You may opt to use your own namespace instead of <code>namespace InstantUssd;</code> provided for [UssdEventListener.php](UssdEventListener.php), [UssdValidator.php](UssdValidator.php) and [UssdController.php](UssdController.php). If you do, remember to reference <code>UssdEventListener.php</code> and <code>UssdValidator.php</code> correctly from the [config file](config/iussd.config.php#L5) and [UssdController.php](UssdController.php#L9).
+<b>Note</b> You may opt to use your own namespace instead of <code>namespace InstantUssd;</code> provided for [UssdEventListener.php](UssdEventListener.php), [UssdValidator.php](UssdValidator.php) and [UssdController.php](UssdController.php). If you do, remember to reference <code>UssdEventListener.php</code> & <code>UssdValidator.php</code> correctly from the [config file](config/iussd.config.php#L5) and [UssdController.php](UssdController.php#L9) respectively.
 
 ## License
 
