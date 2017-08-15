@@ -1,6 +1,6 @@
 <p align="center"><img src="https://avatars1.githubusercontent.com/u/30041331?v=4&s=80"></p>
 
-## About InstantUssd
+## About InstantUssdApp
 
 InstantUssd is USSD development library distributed as <code>bitmarshals/instant-ussd</code> composer package. This project recommends a file structure for incorporating <code>bitmarshals/instant-ussd</code> package to your code.
 
@@ -40,4 +40,4 @@ Finally, import instant ussd tables from [database.sql](config/database.sql) fil
 
 ## License
 
-InstantUssd is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT). However, it has a dependancy of <code>bitmarshals/instant-ussd</code> composer package which is still proprietary.
+InstantUssdApp is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT). However, it has a dependancy of <code>bitmarshals/instant-ussd</code> composer package which is still proprietary.
