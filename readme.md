@@ -36,6 +36,9 @@ $ composer require bitmarshals/instant-ussd:dev-master
 
 Finally, import instant ussd tables from [database.sql](config/database.sql) file.
 
+Note you may opt to change <code>namespace InstantUssd;</code> from the files 
+[UssdEventListener.php](UssdEventListener.php) and [UssdController.php](UssdController.php) 
+to reflect your project structure. If you do remember to reference <code>UssdEventListener.php<code> class correctly from the [config file](config/iussd.config.php)
 
 ## License
 
