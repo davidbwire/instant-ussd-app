@@ -17,7 +17,7 @@ Installation
 First, clone the repository:
 
 ```bash
-# git clone https://github.com/bitmarshals/InstantUssd.git # optionally, specify the directory in which to clone
+# git clone https://github.com/bitmarshals/InstantUssd.git
 $ cd path/to/install
 ```
 
