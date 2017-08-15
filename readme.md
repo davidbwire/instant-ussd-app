@@ -28,6 +28,9 @@ dependencies. Assuming you already have Composer:
 $ composer install
 ```
 
+Finally, import instant ussd tables from [database.sql](config/database.sql) file.
+
+
 ## License
 
 InstantUssd is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT). However, it has a dependancy of <code>bitmarshals/instant-ussd</code> composer package which is still proprietary.
