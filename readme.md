@@ -14,18 +14,24 @@ Installation
 
 ### Via Git (clone)
 
-First, clone the repository:
+First, clone the repository to the approriate folder within your project:
 
 ```bash
 # git clone https://github.com/bitmarshals/InstantUssd.git
 $ cd path/to/install
+# remove .git directory; you no longer need it
+$ rm -Rvf .git
 ```
 
 At this point, you need to use [Composer](https://getcomposer.org/) to install
 dependencies. Assuming you already have Composer:
 
 ```bash
-$ composer install
+$ cd path/to/project/root
+# install bitmarshals/instant-ussd composer package via the command
+# php composer.phar require bitmarshals/instant-ussd:dev-master
+# OR
+$ composer require bitmarshals/instant-ussd:dev-master
 ```
 
 Finally, import instant ussd tables from [database.sql](config/database.sql) file.
