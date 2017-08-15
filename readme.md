@@ -17,7 +17,7 @@ Installation
 First, clone the repository to the approriate folder within your project:
 
 ```bash
-# git clone https://github.com/bitmarshals/InstantUssdApp.git InstantUssd
+# git clone https://github.com/bitmarshals/instant-ussd-app.git InstantUssd
 $ cd path/to/install
 # remove .git directory; you no longer need it
 $ rm -Rvf .git
