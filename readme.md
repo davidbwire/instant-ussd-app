@@ -36,11 +36,8 @@ $ composer require bitmarshals/instant-ussd:dev-master
 
 Finally, import instant ussd tables from [database.sql](config/database.sql) file.
 
-Note you may opt to change <code>namespace InstantUssd;</code> from the files 
-[UssdEventListener.php](UssdEventListener.php) and [UssdController.php](UssdController.php) 
-to reflect your project structure. If you do remember to reference <code>UssdEventListener.php<code> class correctly from the [config file](config/iussd.config.php)
+<b>Note</b> You may opt to use your own namespace instead of <code>namespace InstantUssd;</code> provided for [UssdEventListener.php](UssdEventListener.php) and [UssdController.php](UssdController.php). If you do, remember to reference <code>UssdEventListener.php</code> correctly from the [config file](config/iussd.config.php).
 
 ## License
 
 InstantUssd is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT). However, it has a dependancy of <code>bitmarshals/instant-ussd</code> composer package which is still proprietary.
-
