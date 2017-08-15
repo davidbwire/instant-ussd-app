@@ -2,7 +2,7 @@
 
 ## About InstantUssd App
 
-InstantUssd is USSD development library distributed as <code>bitmarshals/instant-ussd</code> composer package. This project recommends a file structure for incorporating <code>bitmarshals/instant-ussd</code> package to your code.
+InstantUssd is a USSD development library distributed as <code>bitmarshals/instant-ussd</code> composer package. This project recommends a file structure for incorporating <code>bitmarshals/instant-ussd</code> package to your code.
 
 Requirements
 ------------
@@ -14,7 +14,7 @@ Installation
 
 ### Via Git (clone)
 
-First, clone the repository to the approriate folder within your project:
+First, clone the repository:
 
 ```bash
 # git clone https://github.com/bitmarshals/instant-ussd-app.git InstantUssd
@@ -27,14 +27,13 @@ At this point, you need to use [Composer](https://getcomposer.org/) to install
 dependencies. Assuming you already have Composer:
 
 ```bash
-$ cd path/to/project/root
 # install bitmarshals/instant-ussd composer package via the command
-# php composer.phar require bitmarshals/instant-ussd:dev-master
+$ php composer.phar install
 # OR
-$ composer require bitmarshals/instant-ussd:dev-master
+$ composer install
 ```
 
-Finally, import instant ussd tables from [database.sql](config/database.sql) file.
+Finally, import instant ussd tables from [database.sql](config/database.sql) file and then add database connection params to the  [config file](config/iussd.config.php).
 
 <b>Note</b> You may opt to use your own namespace instead of <code>namespace InstantUssd;</code> provided for [UssdEventListener.php](UssdEventListener.php), [UssdValidator.php](UssdValidator.php) and [UssdController.php](UssdController.php). If you do, remember to reference <code>UssdEventListener.php</code> & <code>UssdValidator.php</code> correctly from the [config file](config/iussd.config.php#L5) and [UssdController.php](UssdController.php#L9) respectively.
 
