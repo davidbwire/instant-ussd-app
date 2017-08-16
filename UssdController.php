@@ -49,7 +49,7 @@ class UssdController {
         //------------------ check if we should exit early
         $isExitRequest = $ussdService->isExitRequest($aTrimmedUssdValues);
         if ($isExitRequest === true) {
-            return $instantUssd->exitUssd([], $eventManager)
+            return $instantUssd->exitUssd([])
                             ->send();
         }
 
@@ -74,7 +74,7 @@ class UssdController {
                 (end($aTrimmedUssdValues) === UssdService::HOME_KEY));
 
         if ($isEmptyString || $userRequestsHomePage) {
-            return $instantUssd->showHomePage($ussdData, $eventManager, 'home_instant_ussd')
+            return $instantUssd->showHomePage($ussdData, 'home_instant_ussd')
                             ->send();
         }
 
@@ -82,36 +82,34 @@ class UssdController {
         $isGoBackRequest = $ussdService->isGoBackRequest($aTrimmedUssdValues);
         // should we go back?
         if ($isGoBackRequest === true) {
-            $resultGoBak = $instantUssd->goBack($ussdData, $eventManager);
+            $resultGoBak = $instantUssd->goBack($ussdData);
             if ($resultGoBak instanceof Response) {
                 return $resultGoBak
                                 ->send();
             }
             // Default - show home page if previous_menu missing
-            return $instantUssd->showHomePage($ussdData, $eventManager, 'home_instant_ussd')
+            return $instantUssd->showHomePage($ussdData, 'home_instant_ussd')
                             ->send();
         }
 
         // ++--------- LATEST RESPONSE PROCESSING  -------- */
         // get last served menu_id from database
-        $resultsMenuId    = $eventManager->trigger('_retreive_last_served_menu_', $instantUssd, $ussdData);
-        $lastServedMenuId = $resultsMenuId->first();
+        $lastServedMenuId = $instantUssd->retrieveLastServedMenuId($ussdData);
         // check we got last_served_menu
         if (empty($lastServedMenuId)) {
             // @todo - error
-            return $instantUssd->showHomePage($ussdData, $eventManager, 'home_instant_ussd')
+            return $instantUssd->showHomePage($ussdData, 'home_instant_ussd')
                             ->send();
         }
 
         // Get $lastServedMenuConfig. The config will used in validation trigger
         // Set $ussdData['menu_id'] to know the specific config to retreive
         $ussdData['menu_id']  = $lastServedMenuId;
-        $resultsMenuConfig    = $eventManager->trigger('_retreive_menu_config_', $instantUssd, $ussdData);
-        $lastServedMenuConfig = $resultsMenuConfig->first();
+        $lastServedMenuConfig = $instantUssd->retrieveMenuConfig($ussdData);
         // check we have $lastServedMenuConfig
         if (empty($lastServedMenuConfig)) {
             // @todo - error
-            return $instantUssd->showHomePage($ussdData, $eventManager, 'home_instant_ussd')
+            return $instantUssd->showHomePage($ussdData, 'home_instant_ussd')
                             ->send();
         }
 
@@ -122,7 +120,7 @@ class UssdController {
         if (!$isValid) {
             // handle invalid data
             $nextMenuId = $lastServedMenuId;
-            return $instantUssd->showNextMenuId($ussdData, $eventManager, $nextMenuId)
+            return $instantUssd->showNextMenuId($ussdData, $nextMenuId)
                             ->send();
         }
 
@@ -135,7 +133,7 @@ class UssdController {
         }, $lastServedMenuId, $instantUssd, $ussdData);
         // check if we missed a pointer to the next screen
         if (!$incomingCycleResults->stopped()) {
-            return $instantUssd->showError($ussdData, $eventManager, "Error. Next screen could not be found.")
+            return $instantUssd->showError($ussdData, "Error. Next screen could not be found.")
                             ->send();
         }
 
@@ -149,7 +147,7 @@ class UssdController {
             $instantUssd->getUssdMenusServedMapper()
                     ->resetMenuVisitHistoryToPreviousPosition($ussdParams['sessionId'], $nextMenuId);
         }
-        return $instantUssd->showNextMenuId($ussdData, $eventManager, $nextMenuId)
+        return $instantUssd->showNextMenuId($ussdData, $nextMenuId)
                         ->send();
     }
 
