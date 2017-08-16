@@ -4,7 +4,6 @@ namespace InstantUssd;
 
 use Bitmarshals\InstantUssd\InstantUssd;
 use Zend\Http\PhpEnvironment\Response;
-use Bitmarshals\InstantUssd\UssdService;
 use InstantUssd\UssdValidator;
 
 /**
@@ -26,7 +25,6 @@ class UssdController {
         $config            = require_once './config/iussd.config.php';
         $instantUssdConfig = $config['instant_ussd'];
         $instantUssd       = new InstantUssd($instantUssdConfig, $this);
-        $ussdService       = $instantUssd->getUssdService();
 
         // extract as per framework or use global $_POST
         /* $_POST      = array(
@@ -40,79 +38,56 @@ class UssdController {
         $ussdParams = $_POST;
         $ussdText   = $ussdParams['text'];
 
-        // trim extraneous spaces
-        $aTrimmedUssdValues = $ussdService
-                ->trimArrayValues(explode('*', $ussdText));
+        // package incoming data in a format instant-ussd understands
+        $ussdService = $instantUssd->getUssdService($ussdText);
+        $ussdData    = $ussdService->packageUssdData($ussdParams);
 
-        //------------------ check if we should exit early
-        $isExitRequest = $ussdService->isExitRequest($aTrimmedUssdValues);
+        // Should we EXIT early?
+        $isExitRequest = $ussdService->isExitRequest();
         if ($isExitRequest === true) {
             return $instantUssd->exitUssd([])
                             ->send();
         }
-
-        //------------------ rid $aTrimmedUssdValues of extraneous values
-        $aNonExtraneousUssdValues = $ussdService
-                ->removeExtraneousValues($aTrimmedUssdValues);
-
-        // ++----------------- PACKAGE/COMPACT USSD DATA
-        $ussdData = $this->packageUssdData($ussdParams, $aTrimmedUssdValues, $aNonExtraneousUssdValues);
-
-        // extract & attach latest reponse and first reponse
-        $firstResponse               = $ussdService->getFirstResponse($aNonExtraneousUssdValues);
-        $latestResponse              = $ussdService->getLatestResponse($aTrimmedUssdValues);
-        $ussdData['latest_response'] = $latestResponse;
-        $ussdData['first_response']  = $firstResponse;
-
-        // check if user is starting
-        $isEmptyString        = $ussdService
+        // Should we SHOW HOME Page?
+        $isInitialRequest     = $ussdService
                 ->isEmptyString($ussdText);
-        // check if user requested home page
-        $userRequestsHomePage = (count($aTrimmedUssdValues) &&
-                (end($aTrimmedUssdValues) === UssdService::HOME_KEY));
-
-        if ($isEmptyString || $userRequestsHomePage) {
+        $userRequestsHomePage = $ussdService->isExplicitHomepageRequest();
+        if ($isInitialRequest || $userRequestsHomePage) {
             return $instantUssd->showHomePage($ussdData, 'home_instant_ussd')
                             ->send();
         }
-
-        // check if user is trying to go back
-        $isGoBackRequest = $ussdService->isGoBackRequest($aTrimmedUssdValues);
-        // should we go back?
+        // Should we GO BACK?
+        $isGoBackRequest = $ussdService->isGoBackRequest();
         if ($isGoBackRequest === true) {
             $resultGoBak = $instantUssd->goBack($ussdData);
             if ($resultGoBak instanceof Response) {
-                return $resultGoBak
-                                ->send();
+                return $resultGoBak->send();
             }
-            // Default - show home page if previous_menu missing
+            // fallback to home page if previous menu missing
             return $instantUssd->showHomePage($ussdData, 'home_instant_ussd')
                             ->send();
         }
-
-        // ++--------- LATEST RESPONSE PROCESSING  -------- */
+        // We are ready to PROCESS LATEST DATA from user's device
+        //        
         // get last served menu_id from database
         $lastServedMenuId = $instantUssd->retrieveLastServedMenuId($ussdData);
         // check we got last_served_menu
         if (empty($lastServedMenuId)) {
-            // @todo - error
+            // fallback to home page
             return $instantUssd->showHomePage($ussdData, 'home_instant_ussd')
                             ->send();
         }
-
         // Get $lastServedMenuConfig. The config will used in validation trigger
         // Set $ussdData['menu_id'] to know the specific config to retreive
         $ussdData['menu_id']  = $lastServedMenuId;
         $lastServedMenuConfig = $instantUssd->retrieveMenuConfig($ussdData);
         // check we have $lastServedMenuConfig
         if (empty($lastServedMenuConfig)) {
-            // @todo - error
+            // fallback to home page
             return $instantUssd->showHomePage($ussdData, 'home_instant_ussd')
                             ->send();
         }
-
-        // ++----------- VALIDATE INCOMING DATA
-        // validate incoming data
+        // VALIDATE incoming data
         $validator = new UssdValidator($lastServedMenuId, $lastServedMenuConfig);
         $isValid   = $validator->isValidResponse($ussdData);
         if (!$isValid) {
@@ -122,35 +97,17 @@ class UssdController {
             return $instantUssd->showNextMenuId($ussdData, $nextMenuId)
                             ->send();
         }
-
-        // ++--------------- SEND VALID DATA FOR PROCESSING
+        // send valid data FOR PROCESSING. Save to db, etc
+        // this step should give us a pointer to the next screen
         $nextMenuId = $instantUssd->processIncomingData($lastServedMenuId, $ussdData);
         if (empty($nextMenuId)) {
             // we couldn't find the next screen
             return $instantUssd->showError($ussdData, "Error. Next screen could not be found.")
                             ->send();
         }
-        // we have the next screen; show it
+        // we have the next screen; SHOW NEXT SCREEN
         return $instantUssd->showNextMenuId($ussdData, $nextMenuId)
                         ->send();
-    }
-
-    /**
-     * 
-     * @param array $ussdParams
-     * @param array $aTrimmedUssdValues
-     * @param array $aNonExtraneousUssdValues
-     * @return array
-     */
-    protected function packageUssdData($ussdParams, $aTrimmedUssdValues, $aNonExtraneousUssdValues) {
-        return [
-            'phone_number' => $ussdParams['phoneNumber'],
-            'session_id' => $ussdParams['sessionId'],
-            'service_code' => $ussdParams ['serviceCode'],
-            'text' => $ussdParams['text'],
-            'a_values_trimmed' => $aTrimmedUssdValues,
-            'a_values_non_extraneous' => $aNonExtraneousUssdValues
-        ];
     }
 
 }
