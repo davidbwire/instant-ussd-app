@@ -33,8 +33,6 @@ class UssdController {
           'phoneNumber' => '+254712688559',
           'serviceCode' => '*483*1#',
           ); */
-
-        // use framework utils to extract data safely
         $ussdParams = $_POST;
         $ussdText   = $ussdParams['text'];
 
@@ -49,10 +47,10 @@ class UssdController {
                             ->send();
         }
         // Should we SHOW HOME Page?
-        $isInitialRequest     = $ussdService
+        $isFirstRequest     = $ussdService
                 ->isEmptyString($ussdText);
         $userRequestsHomePage = $ussdService->isExplicitHomepageRequest();
-        if ($isInitialRequest || $userRequestsHomePage) {
+        if ($isFirstRequest || $userRequestsHomePage) {
             return $instantUssd->showHomePage($ussdData, 'home_instant_ussd')
                             ->send();
         }
