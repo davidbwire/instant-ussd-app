@@ -28,7 +28,7 @@ class UssdController {
         $instantUssdConfig = $config['instant_ussd'];
         $instantUssd       = new InstantUssd($instantUssdConfig, $this);
         $ussdService       = $instantUssd->getUssdService();
-        $eventManager      = $ussdService->getEventManager();
+        $eventManager      = $instantUssd->getEventManager();
 
         // extract as per framework or use global $_POST
         /* $_POST      = array(
