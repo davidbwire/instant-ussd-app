@@ -4,7 +4,6 @@ namespace InstantUssd;
 
 use Bitmarshals\InstantUssd\InstantUssd;
 use Zend\Http\PhpEnvironment\Response;
-use Bitmarshals\InstantUssd\UssdMenuItem;
 use Bitmarshals\InstantUssd\UssdService;
 use InstantUssd\UssdValidator;
 
@@ -28,7 +27,6 @@ class UssdController {
         $instantUssdConfig = $config['instant_ussd'];
         $instantUssd       = new InstantUssd($instantUssdConfig, $this);
         $ussdService       = $instantUssd->getUssdService();
-        $eventManager      = $instantUssd->getEventManager();
 
         // extract as per framework or use global $_POST
         /* $_POST      = array(
@@ -120,33 +118,19 @@ class UssdController {
         if (!$isValid) {
             // handle invalid data
             $nextMenuId = $lastServedMenuId;
+            // essentially we're re-rendering the menu with error message
             return $instantUssd->showNextMenuId($ussdData, $nextMenuId)
                             ->send();
         }
 
-        // ++--------------- SEND VALID DATA FOR PROCESSING 
-        // activate incoming data state
-        $ussdData['is_incoming_data'] = true;
-        $incomingCycleResults         = $eventManager->triggerUntil(function ($result) {
-            // data was processed and we should expect a pointer to the next menu
-            return ($result instanceof UssdMenuItem);
-        }, $lastServedMenuId, $instantUssd, $ussdData);
-        // check if we missed a pointer to the next screen
-        if (!$incomingCycleResults->stopped()) {
+        // ++--------------- SEND VALID DATA FOR PROCESSING
+        $nextMenuId = $instantUssd->processIncomingData($lastServedMenuId, $ussdData);
+        if (empty($nextMenuId)) {
+            // we couldn't find the next screen
             return $instantUssd->showError($ussdData, "Error. Next screen could not be found.")
                             ->send();
         }
-
-        // try and render the pointer/next screen
-        $ussdMenuItem              = $incomingCycleResults->last();
-        $isResetToPreviousPosition = $ussdMenuItem->isResetToPreviousPosition();
-        // retreive our next menu_id
-        $nextMenuId                = $ussdMenuItem->getNextMenuId();
-        // check if it's a parent node reset
-        if ($isResetToPreviousPosition) {
-            $instantUssd->getUssdMenusServedMapper()
-                    ->resetMenuVisitHistoryToPreviousPosition($ussdParams['sessionId'], $nextMenuId);
-        }
+        // we have the next screen; show it
         return $instantUssd->showNextMenuId($ussdData, $nextMenuId)
                         ->send();
     }
