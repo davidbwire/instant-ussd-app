@@ -22,10 +22,10 @@ class UssdEventListener extends InstantUssdEventListener {
             }
             $menuConfig     = $ussdMenusConfig[$e->getName()];
             // we have data sent in
-            // 1. Get latest response; it should be valid
+            // 2. Get latest response; it should be valid
             $latestResponse = $e->getLatestResponse();
             $lastServedMenu = $e->getName();
-            // 2. Check if we should skip this listener
+            // 3. Check if we should skip this listener
             if (!$e->containsIncomingData()) {
                 $this->attachDynamicErrors($e, $menuConfig);
                 // clear tracked menus
@@ -36,8 +36,7 @@ class UssdEventListener extends InstantUssdEventListener {
                 }
                 return $this->ussdResponseGenerator->composeAndRenderUssdMenu($menuConfig, true, false);
             }
-            // 3. Do your processing; save to db; etc
-            // 4. Check if we should stop looping
+            // 4. Do your processing; save to db; etc
             // 5. Determine next menu using $lastServedMenu, $menuConfig and $latestResponse
             return $this->ussdResponseGenerator->determineNextMenu($lastServedMenu, $menuConfig, $latestResponse);
         });
@@ -47,13 +46,15 @@ class UssdEventListener extends InstantUssdEventListener {
             if (!$e instanceof UssdEvent) {
                 return false;
             }
-            $menuConfig     = $ussdMenusConfig[$e->getName()];
+            $menuConfig        = $ussdMenusConfig[$e->getName()];
+            // 1. $shouldStopLooping should be called just before a call to determineNextMenu
+            // $shouldStopLooping = $e->getInstantUssd()->shouldStopLooping($menuConfig, $e);
             // we have data sent in
-            // 1. Get latest response; it should be valid
-            $latestResponse = $e->getLatestResponse();
-            $lastServedMenu = $e->getName();
+            // 2. Get latest response; it should be valid
+            $latestResponse    = $e->getLatestResponse();
+            $lastServedMenu    = $e->getName();
 
-            /* / 2. *             * *---------------- SKIPPABLE MENU EXAMPLE 
+            /* / 3. *             * *---------------- SKIPPABLE MENU EXAMPLE 
               $isSkippableMenu = $e->getInstantUssd()
               ->getSkippableUssdMenuMapper()
               ->isSkippable(['reference_id' => 1]);
@@ -61,8 +62,6 @@ class UssdEventListener extends InstantUssdEventListener {
               // stop propagation so that it is not captured
               $e->stopPropagation(true);
               // return a pointer to the menu we should skip to
-              // $shouldStopLooping should be called just before a call to determineNextMenu
-              $shouldStopLooping = $e->getInstantUssd()->shouldStopLooping($menuConfig, $e);
               $ussdMenuItem = $this->ussdResponseGenerator->determineNextMenu($lastServedMenu, $menuConfig, $latestResponse, $shouldStopLooping);
               return $ussdMenuItem;
               }
@@ -72,7 +71,7 @@ class UssdEventListener extends InstantUssdEventListener {
                 $this->attachDynamicErrors($e, $menuConfig);
                 return $this->ussdResponseGenerator->composeAndRenderUssdMenu($menuConfig);
             }
-            // 3. Do your processing; save to db; etc
+            // 4. Do your processing; save to db; etc
             // 5. Determine next menu using $lastServedMenu, $menuConfig and $latestResponse
             return $this->ussdResponseGenerator->determineNextMenu($lastServedMenu, $menuConfig, $latestResponse);
         });
@@ -83,7 +82,7 @@ class UssdEventListener extends InstantUssdEventListener {
             }
             $menuConfig     = $ussdMenusConfig[$e->getName()];
             // we have data sent in
-            // 1. Get latest response; it should be valid
+            // 2. Get latest response; it should be valid
             $latestResponse = $e->getLatestResponse();
             $lastServedMenu = $e->getName();
 
@@ -94,7 +93,7 @@ class UssdEventListener extends InstantUssdEventListener {
             }
             $e->getInstantUssd()->getUssdLoopMapper()
                     ->initializeLoopingSession($menuConfig['target_loopset'], $e->getParam('session_id'), $latestResponse);
-            // 3. Do your processing; save to db; etc
+            // 4. Do your processing; save to db; etc
             // 5. Determine next menu using $lastServedMenu, $menuConfig and $latestResponse
             return $this->ussdResponseGenerator->determineNextMenu($lastServedMenu, $menuConfig, $latestResponse);
         });
@@ -103,21 +102,21 @@ class UssdEventListener extends InstantUssdEventListener {
             if (!$e instanceof UssdEvent) {
                 return false;
             }
-            $menuConfig     = $ussdMenusConfig[$e->getName()];
+            $menuConfig        = $ussdMenusConfig[$e->getName()];
+            // 1.
+            $shouldStopLooping = $e->getInstantUssd()->shouldStopLooping($menuConfig, $e);
             // we have data sent in
-            // 1. Get latest response; it should be valid
-            $latestResponse = $e->getLatestResponse();
-            $lastServedMenu = $e->getName();
+            // 2. Get latest response; it should be valid
+            $latestResponse    = $e->getLatestResponse();
+            $lastServedMenu    = $e->getName();
 
             if (!$e->containsIncomingData()) {
                 /* show this menu */
                 $this->attachDynamicErrors($e, $menuConfig);
                 return $this->ussdResponseGenerator->composeAndRenderUssdMenu($menuConfig);
             }
-            // 3. Do your processing; save to db; etc
-            // 4. $shouldStopLooping should be called just before a call to determineNextMenu
+            // 4. Do your processing; save to db; etc
             // 5. Determine next menu using $lastServedMenu, $menuConfig and $latestResponse
-            $shouldStopLooping = $e->getInstantUssd()->shouldStopLooping($menuConfig, $e);
             return $this->ussdResponseGenerator->determineNextMenu($lastServedMenu, $menuConfig, $latestResponse, $shouldStopLooping);
         });
         // MY ACCOUNT
@@ -127,7 +126,7 @@ class UssdEventListener extends InstantUssdEventListener {
             }
             $menuConfig     = $ussdMenusConfig[$e->getName()];
             // we have data sent in
-            // 1. Get latest response; it should be valid
+            // 2. Get latest response; it should be valid
             $latestResponse = $e->getLatestResponse();
             $lastServedMenu = $e->getName();
 
@@ -136,7 +135,7 @@ class UssdEventListener extends InstantUssdEventListener {
                 $this->attachDynamicErrors($e, $menuConfig);
                 return $this->ussdResponseGenerator->composeAndRenderUssdMenu($menuConfig);
             }
-            // 3. Do your processing; save to db; etc
+            // 4. Do your processing; save to db; etc
             // 5. Determine next menu using $lastServedMenu, $menuConfig and $latestResponse
             return $this->ussdResponseGenerator->determineNextMenu($lastServedMenu, $menuConfig, $latestResponse);
         });
@@ -148,7 +147,7 @@ class UssdEventListener extends InstantUssdEventListener {
             }
             $menuConfig     = $ussdMenusConfig[$e->getName()];
             // we have data sent in
-            // 1. Get latest response; it should be valid
+            // 2. Get latest response; it should be valid
             $latestResponse = $e->getLatestResponse();
             $lastServedMenu = $e->getName();
 
@@ -157,7 +156,7 @@ class UssdEventListener extends InstantUssdEventListener {
                 $this->attachDynamicErrors($e, $menuConfig);
                 return $this->ussdResponseGenerator->composeAndRenderUssdMenu($menuConfig, false);
             }
-            // 3. Do your processing; save to db; etc
+            // 4. Do your processing; save to db; etc
             // 5. Determine next menu using $lastServedMenu, $menuConfig and $latestResponse
             return $this->ussdResponseGenerator->determineNextMenu($lastServedMenu, $menuConfig, $latestResponse);
         });
