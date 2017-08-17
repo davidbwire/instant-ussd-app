@@ -116,8 +116,8 @@ return [
             ],
             "iussd.final" => [
                 "title" => "Final Step",
-                "body" => "Thank you for trying-out InstantUssd. You may "
-                . "delete or edit the configs & listeners to suit your use case.",
+                "body" => "That's InstantUssd in a nutshell. You may "
+                . "delete or edit the configs and listeners to suit your use case.",
                 "footer" => "",
                 "menu_items_ranking_type" => UssdMenuConfig::RANKING_TYPE_NONE,
                 "valid_values" => [],
