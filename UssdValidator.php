@@ -33,6 +33,7 @@ class UssdValidator extends InstantUssdValidator {
                 break;
             /* -- add your own case statements here an validate -- */
             default:
+                $isValid = true;
             //    You may also set custom error
             //    eg $ussdData['error_message'] = "Incorrect password.";
         }
