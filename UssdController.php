@@ -8,6 +8,8 @@ use InstantUssd\UssdValidator;
 
 /**
  * Description of UssdController
+ * 
+ * This is an example of how you can integrate InstantUssd to your controller.
  *
  * @author David Bwire
  */
