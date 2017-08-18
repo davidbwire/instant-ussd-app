@@ -92,21 +92,21 @@ class UssdController {
         $isValid   = $validator->isValidResponse($ussdData);
         if (!$isValid) {
             // handle invalid data
-            $nextMenuId = $lastServedMenuId;
+            $nextScreenId = $lastServedMenuId;
             // essentially we're re-rendering the menu with error message
-            return $instantUssd->showNextMenuId($ussdData, $nextMenuId)
+            return $instantUssd->showNextScreen($ussdData, $nextScreenId)
                             ->send();
         }
         // send valid data FOR PROCESSING. Save to db, etc
         // this step should give us a pointer to the next screen
-        $nextMenuId = $instantUssd->processIncomingData($lastServedMenuId, $ussdData);
-        if (empty($nextMenuId)) {
+        $nextScreenId = $instantUssd->processIncomingData($lastServedMenuId, $ussdData);
+        if (empty($nextScreenId)) {
             // we couldn't find the next screen
             return $instantUssd->showError($ussdData, "Error. Next screen could not be found.")
                             ->send();
         }
         // we have the next screen; SHOW NEXT SCREEN
-        return $instantUssd->showNextMenuId($ussdData, $nextMenuId)
+        return $instantUssd->showNextScreen($ussdData, $nextScreenId)
                         ->send();
     }
 
