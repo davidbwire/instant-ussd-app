@@ -49,8 +49,8 @@ class UssdController {
                             ->send();
         }
         // Should we SHOW HOME Page?
-        $isFirstRequest     = $ussdService
-                ->isEmptyString($ussdText);
+        $isFirstRequest       = $ussdService
+                ->isFirstRequest();
         $userRequestsHomePage = $ussdService->isExplicitHomepageRequest();
         if ($isFirstRequest || $userRequestsHomePage) {
             return $instantUssd->showHomePage($ussdData, 'home_instant_ussd')
