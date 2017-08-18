@@ -30,15 +30,15 @@ return [
                 // menu_items
                 "menu_items" => [
                     [
-                        "next_menu_id" => 'iussd.register.self',
+                        "next_screen" => 'iussd.register.self',
                         "description" => "Register Self"
                     ],
                     [
-                        "next_menu_id" => 'iussd.register.client.count',
+                        "next_screen" => 'iussd.register.client.count',
                         "description" => "Register Clients"
                     ],
                     [
-                        "next_menu_id" => 'iussd.my_account',
+                        "next_screen" => 'iussd.my_account',
                         "description" => "My Account"
                     ]
                 ]
@@ -52,7 +52,7 @@ return [
                 // menu_items
                 "menu_items" => [
                     [
-                        "next_menu_id" => 'iussd.final',
+                        "next_screen" => 'iussd.final',
                         "description" => ""
                     ]
                 ]
@@ -68,7 +68,7 @@ return [
                 // menu_items
                 "menu_items" => [
                     [
-                        "next_menu_id" => 'iussd.register.client',
+                        "next_screen" => 'iussd.register.client',
                         "description" => ""
                     ]
                 ]
@@ -91,7 +91,7 @@ return [
                 // menu_items
                 "menu_items" => [
                     [
-                        "next_menu_id" => 'iussd.final',
+                        "next_screen" => 'iussd.final',
                         "description" => ""
                     ]
                 ]
@@ -105,11 +105,11 @@ return [
                 // menu_items
                 "menu_items" => [
                     [
-                        "next_menu_id" => 'iussd.final',
+                        "next_screen" => 'iussd.final',
                         "description" => "Registered Clients"
                     ],
                     [
-                        "next_menu_id" => 'iussd.final',
+                        "next_screen" => 'iussd.final',
                         "description" => "Commission Received"
                     ]
                 ]
@@ -124,9 +124,9 @@ return [
                 // menu_items
                 "menu_items" => [
                     [
-                        // empty next_menu_id will force an automatic exit
+                        // empty next_screen will force an automatic exit
                         // if user tries to send back a value
-                        "next_menu_id" => ""
+                        "next_screen" => ""
                     ]
                 ]
             ]
