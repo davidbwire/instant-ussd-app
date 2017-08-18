@@ -47,7 +47,7 @@ class UssdEventListener extends InstantUssdEventListener {
                 return false;
             }
             $menuConfig        = $ussdMenusConfig[$e->getName()];
-            // 1. $shouldStopLooping should be called just before a call to determineNextMenu
+            // 1. $shouldStopLooping should be called before a call to determineNextMenu
             // $shouldStopLooping = $e->getInstantUssd()->shouldStopLooping($menuConfig, $e);
             // we have data sent in
             // 2. Get latest response; it should be valid
@@ -57,7 +57,7 @@ class UssdEventListener extends InstantUssdEventListener {
             /* / 3. *             * *---------------- SKIPPABLE MENU EXAMPLE 
               $isSkippableMenu = $e->getInstantUssd()
               ->getSkippableUssdMenuMapper()
-              ->isSkippable(['reference_id' => 1]);
+              ->isSkippable(['col_1' => $col1Val, 'col_2' => $col2Val, 'col_n' => $colNVal], $tableToCheck);
               if ($isSkippableMenu) {
               // stop propagation so that it is not captured
               $e->stopPropagation(true);
