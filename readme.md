@@ -4,6 +4,20 @@
 
 InstantUssd is a USSD development library distributed as <code>bitmarshals/instant-ussd</code> composer package. This project recommends a file structure for incorporating <code>bitmarshals/instant-ussd</code> package to your code.
 
+Features
+--------
+- Minimal coding (Provide USSD menus as config)
+- Automatic screen to screen navigation
+- Out of the box validation of user inputs
+- Ready solutions for complex USSD flows involving going back and forth,
+optional screens, looping set of screens,  jumping from screen to screen and 
+resuming timed-out USSD sessions
+
+Goals
+-----
+- Speed up USSD development
+- Ease maintenance of USSD code
+
 Requirements
 ------------
 
@@ -17,7 +31,7 @@ Installation
 First, clone the repository:
 
 ```bash
-# git clone https://github.com/bitmarshals/instant-ussd-app.git InstantUssd
+# git clone https://github.com/davidbwire/instant-ussd-app.git InstantUssd
 $ cd path/to/install
 # remove .git directory; you no longer need it
 $ rm -Rvf .git
@@ -27,16 +41,12 @@ At this point, you need to use [Composer](https://getcomposer.org/) to install
 dependencies. Assuming you already have Composer:
 
 ```bash
-# install bitmarshals/instant-ussd composer package via the command
 $ php composer.phar install
 # OR
 $ composer install
 ```
 
 Finally, import instant ussd tables from [database.sql](config/database.sql) file and then add database connection params to the  [config file](config/iussd.config.php).
-
-<b>Note</b> 
-You may opt to use your own namespace instead of <code>InstantUssd</code> provided in [UssdEventListener.php](UssdEventListener.php), [UssdValidator.php](UssdValidator.php) and [UssdController.php](UssdController.php) files. If you do, remember to reference <code>UssdEventListener.php</code>, <code>UssdValidator.php</code> & <code>UssdController.php</code> correctly from [iussd.config.php](config/iussd.config.php), [UssdController.php](UssdController.php) and [callback.php](callback.php) files respectively. Also update the psr-4 section of [composer.json](composer.json) file.
 
 ## License
 
