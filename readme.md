@@ -4,19 +4,21 @@
 
 InstantUssd is a USSD development library distributed as <code>bitmarshals/instant-ussd</code> composer package. This project recommends a file structure for incorporating <code>bitmarshals/instant-ussd</code> package to your code.
 
-Features
---------
+InstantUssd Goals
+-----------------
+
+- Speed up USSD development
+- Ease maintenance of USSD code
+
+InstantUssd Features
+--------------------
+
 - Minimal coding (Provide USSD menus as config)
 - Automatic screen to screen navigation
 - Out of the box validation of user inputs
 - Ready solutions for complex USSD flows involving going back and forth,
 optional screens, looping set of screens,  jumping from screen to screen and 
 resuming timed-out USSD sessions
-
-Goals
------
-- Speed up USSD development
-- Ease maintenance of USSD code
 
 Requirements
 ------------
