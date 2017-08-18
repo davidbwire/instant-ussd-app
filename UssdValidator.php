@@ -13,7 +13,7 @@ class UssdValidator extends InstantUssdValidator {
 
     /**
      * 
-     * @param array $ussdData
+     * @param array $ussdData IMPORTANT pass by reference
      * @return boolean
      */
     public function isValidResponse(array &$ussdData) {
@@ -37,7 +37,7 @@ class UssdValidator extends InstantUssdValidator {
             //    You may also set custom error
             //    eg $ussdData['error_message'] = "Incorrect password.";
         }
-        // set is_valid status to prevent menu from being tracked/saved
+        // IMPORTANT set validity status to prevent invalid menu from being tracked/saved
         $ussdData['is_valid'] = $isValid;
         return $isValid;
     }
