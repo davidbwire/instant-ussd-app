@@ -28,7 +28,7 @@ class UssdValidator extends InstantUssdValidator {
 
         // Run a custom validator depending on menu_id
         switch ($this->lastServedMenuId) {
-            case "enter_full_name":
+            case "iussd.register.client":
                 $isValid = $this->fullNameValidation($latestResponse, $ussdData);
                 break;
             /* -- add your own case statements here an validate -- */
