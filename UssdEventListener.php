@@ -27,12 +27,12 @@ class UssdEventListener extends InstantUssdEventListener {
             $lastServedMenu = $e->getName();
             // 3. Check if we should skip this listener
             if (!$e->containsIncomingData()) {
-                $this->attachDynamicErrors($e, $menuConfig);
+                $e->attachDynamicErrors($menuConfig);
                 // clear tracked menus
                 $isValidResponse = $e->getParam('is_valid', true);
                 if ($isValidResponse) {
                     // this method should only be called by home menus (menus beginning with home_*)
-                    $this->clearMenuVisitHistory($e);
+                    $e->getInstantUssd()->clearMenuVisitHistory($e);
                 }
                 return $this->ussdResponseGenerator->composeAndRenderUssdMenu($menuConfig, true, false);
             }
@@ -68,7 +68,7 @@ class UssdEventListener extends InstantUssdEventListener {
               /* -------------------------------------------- */
             if (!$e->containsIncomingData()) {
                 /* show this menu */
-                $this->attachDynamicErrors($e, $menuConfig);
+                $e->attachDynamicErrors($menuConfig);
                 return $this->ussdResponseGenerator->composeAndRenderUssdMenu($menuConfig);
             }
             // 4. Do your processing; save to db; etc
@@ -88,7 +88,7 @@ class UssdEventListener extends InstantUssdEventListener {
 
             if (!$e->containsIncomingData()) {
                 /* show this menu */
-                $this->attachDynamicErrors($e, $menuConfig);
+                $e->attachDynamicErrors($menuConfig);
                 return $this->ussdResponseGenerator->composeAndRenderUssdMenu($menuConfig);
             }
             $e->getInstantUssd()->getUssdLoopMapper()
@@ -112,7 +112,7 @@ class UssdEventListener extends InstantUssdEventListener {
 
             if (!$e->containsIncomingData()) {
                 /* show this menu */
-                $this->attachDynamicErrors($e, $menuConfig);
+                $e->attachDynamicErrors($menuConfig);
                 return $this->ussdResponseGenerator->composeAndRenderUssdMenu($menuConfig);
             }
             // 4. Do your processing; save to db; etc
@@ -132,7 +132,7 @@ class UssdEventListener extends InstantUssdEventListener {
 
             if (!$e->containsIncomingData()) {
                 /* show this menu */
-                $this->attachDynamicErrors($e, $menuConfig);
+                $e->attachDynamicErrors($menuConfig);
                 return $this->ussdResponseGenerator->composeAndRenderUssdMenu($menuConfig);
             }
             // 4. Do your processing; save to db; etc
@@ -153,7 +153,7 @@ class UssdEventListener extends InstantUssdEventListener {
 
             if (!$e->containsIncomingData()) {
                 /* show this menu */
-                $this->attachDynamicErrors($e, $menuConfig);
+                $e->attachDynamicErrors($menuConfig);
                 return $this->ussdResponseGenerator->composeAndRenderUssdMenu($menuConfig, false);
             }
             // 4. Do your processing; save to db; etc
