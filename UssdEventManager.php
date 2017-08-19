@@ -15,15 +15,19 @@ class UssdEventManager extends InstantUssdEventManager {
 
     public function __construct(array $ussdMenusConfig) {
         parent::__construct($ussdMenusConfig);
+        
         // HOME PAGE example
         // example - attaching an event
         $this->attach('Bitmarshals\InstantUssd', 'home_instant_ussd', function($e) use ($ussdMenusConfig) {
+            // instantiate your CUSTOM listener class
             $listener             = new Listeners\HomeInstantUssd($e, $ussdMenusConfig);
             $continueUssdHops     = true;
             $appendNavigationText = true;
+            // TRIGGER IT
             return call_user_func([$listener, "onTrigger"], $continueUssdHops, $appendNavigationText);
         });
-        // Have a default listener for quick set up
+        
+        // DEFAULT LISTENER - Helps with quick setup
         $defaultListener = function($e) use ($ussdMenusConfig) {
             $continueUssdHops     = true;
             $appendNavigationText = true;
