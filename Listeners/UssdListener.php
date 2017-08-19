@@ -8,7 +8,7 @@ use Bitmarshals\InstantUssd\UssdMenuItem;
 use Bitmarshals\InstantUssd\Response;
 
 /**
- * Description of IUssdFinal
+ * Description of UssdListener
  *
  * @author David Bwire
  */

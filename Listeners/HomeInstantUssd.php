@@ -5,7 +5,7 @@ namespace InstantUssd\Listeners;
 use InstantUssd\Listeners\UssdListener;
 
 /**
- * Description of UssdListener
+ * Description of HomeInstantUssd
  *
  * @author David Bwire
  */
