@@ -26,7 +26,7 @@ return [
                 "body" => "",
                 "footer" => "Questions? Call +254712688559",
                 "menu_items_ranking_type" => UssdMenuConfig::RANKING_TYPE_PREDETERMINED,
-                "valid_values" => range(1, 3),
+                "valid_keys" => range(1, 3),
                 // menu_items
                 "menu_items" => [
                     [
@@ -48,7 +48,7 @@ return [
                 "body" => "Enter your First Name and Last Name",
                 "footer" => "",
                 "menu_items_ranking_type" => UssdMenuConfig::RANKING_TYPE_NONE,
-                "valid_values" => [],
+                "valid_keys" => [],
                 // menu_items
                 "menu_items" => [
                     [
@@ -62,7 +62,7 @@ return [
                 "body" => "How many clients would you like to register?",
                 "footer" => "",
                 "menu_items_ranking_type" => UssdMenuConfig::RANKING_TYPE_NONE,
-                "valid_values" => [],
+                "valid_keys" => [],
                 // target_loopset - indicates the set of menu this
                 "target_loopset" => "register_clients",
                 // menu_items
@@ -77,7 +77,7 @@ return [
                 "body" => "Enter client's First Name and Last Name",
                 "footer" => "",
                 "menu_items_ranking_type" => UssdMenuConfig::RANKING_TYPE_NONE,
-                "valid_values" => [],
+                "valid_keys" => [],
                 // loopset_name - a name that's shared by all screens within a 
                 // looping set
                 "loopset_name" => "register_clients",
@@ -101,7 +101,7 @@ return [
                 "body" => "",
                 "footer" => "",
                 "menu_items_ranking_type" => UssdMenuConfig::RANKING_TYPE_PREDETERMINED,
-                "valid_values" => range(1, 2),
+                "valid_keys" => range(1, 2),
                 // menu_items
                 "menu_items" => [
                     [
@@ -120,7 +120,7 @@ return [
                 . "delete or edit the configs and listeners to suit your use case.",
                 "footer" => "",
                 "menu_items_ranking_type" => UssdMenuConfig::RANKING_TYPE_NONE,
-                "valid_values" => [],
+                "valid_keys" => [],
                 // menu_items
                 "menu_items" => [
                     [
