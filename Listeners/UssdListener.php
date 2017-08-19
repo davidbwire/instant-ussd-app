@@ -140,6 +140,10 @@ class UssdListener {
      * @return boolean
      */
     protected function isSkippableScreen() {
+        /* $isSkippableMenu = $this->ussdEvent->getInstantUssd()
+          ->getSkippableUssdMenuMapper()
+          ->isSkippable(['col_1' => $col1Val,
+          'col_2' => $col2Val, 'col_n' => $colNVal], $tableToCheck); */
         return (bool) $this->ussdEvent->getParam('is_skippable', false);
     }
 
