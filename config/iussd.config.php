@@ -2,11 +2,11 @@
 
 use Bitmarshals\InstantUssd\Mapper;
 use Bitmarshals\InstantUssd\UssdMenuConfig;
-use InstantUssd\UssdEventListener;
+use InstantUssd\UssdEventManager;
 
 return [
     "instant_ussd" => [
-        "ussd_event_listener" => UssdEventListener::class,
+        "ussd_event_manager" => UssdEventManager::class,
         'db' => [
             'driver' => 'Mysqli', // Mysqli, Sqlsrv, Pdo_Sqlite, Pdo_Mysql, Pdo(= Other PDO Driver)
             'database' => '',

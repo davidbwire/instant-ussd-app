@@ -2,31 +2,33 @@
 
 namespace InstantUssd;
 
-use Bitmarshals\InstantUssd\UssdEventListener as InstantUssdEventListener;
 use Bitmarshals\InstantUssd\UssdEvent;
 use InstantUssd\Listeners;
+use Bitmarshals\InstantUssd\UssdEventManager as InstantUssdEventManager;
 
 /**
  * Description of UssdEventListener
  *
  * @author David Bwire
  */
-class UssdEventListener extends InstantUssdEventListener {
+class UssdEventManager extends InstantUssdEventManager {
 
     public function __construct(array $ussdMenusConfig) {
         parent::__construct($ussdMenusConfig);
         // HOME PAGE example
         // example - attaching an event
         $this->attach('Bitmarshals\InstantUssd', 'home_instant_ussd', function($e) use ($ussdMenusConfig) {
-            $listener = new Listeners\HomeInstantUssd($e, $ussdMenusConfig);
-            return call_user_func_array([$listener, "onTrigger"]);
-        });        
+            $listener             = new Listeners\HomeInstantUssd($e, $ussdMenusConfig);
+            $continueUssdHops     = true;
+            $appendNavigationText = true;
+            return call_user_func([$listener, "onTrigger"], $continueUssdHops, $appendNavigationText);
+        });
         // Have a default listener for quick set up
         $defaultListener = function($e) use ($ussdMenusConfig) {
             $continueUssdHops     = true;
-            $appendNavigationText = false;
+            $appendNavigationText = true;
             $listener             = new Listeners\UssdListener($e, $ussdMenusConfig);
-            return call_user_func_array([$listener, "onTrigger"], [$continueUssdHops, $appendNavigationText]);
+            return call_user_func([$listener, "onTrigger"], $continueUssdHops, $appendNavigationText);
         };
         // REGISTER - SELF
         $this->attach("Bitmarshals\InstantUssd", 'iussd.register.self', $defaultListener);
