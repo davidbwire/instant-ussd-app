@@ -31,6 +31,9 @@ class UssdValidator extends InstantUssdValidator {
             case "iussd.register.client":
                 $isValid = $this->fullNameValidation($latestResponse, $ussdData);
                 break;
+            case "iussd.register.self":
+                $isValid = $this->fullNameValidation($latestResponse, $ussdData);
+                break;
             /* -- add your own case statements here an validate -- */
             default:
                 $isValid = true;
