@@ -76,10 +76,16 @@ class UssdListener {
         if ($this->isSkippableScreen()) {
             // stop event propagation so that navigation history is not captured
             $this->ussdEvent->stopPropagation(true);
-            return $this->nextMenu();
+            $alternativeScreen = $this->getAlternativeScreen();
+            if ($alternativeScreen instanceof UssdMenuItem) {
+                // return $alternativeScreen thus skipping default screen
+                return $alternativeScreen;
+            } else {
+                // return default screen
+                return $this->nextMenu();
+            }
         }
         if (!$e->containsIncomingData()) {
-            /* show this menu */
             $e->attachDynamicErrors($this->menuConfig);
             $isValidResponse = $e->getParam('is_valid', true);
             $isHomeMenu      = (substr($this->lastServedMenu, 0, 5) == 'home_');
@@ -120,18 +126,37 @@ class UssdListener {
     }
 
     /**
-     * @return void
+     * Override this method and add your business logic
+     * 
+     *  @return void
      */
     protected function captureIncomingData() {
         
     }
 
     /**
+     * Override this method to add logic to check if a screen is skippable
      * 
      * @return boolean
      */
     protected function isSkippableScreen() {
-        return false;
+        return (bool) $this->ussdEvent->getParam('is_skippable', false);
+    }
+
+    /**
+     * Override this method to manage optional screens/pages
+     * 
+     * @return UssdMenuItem
+     */
+    protected function getAlternativeScreen() {
+        // set the screen we should show
+        $alternativeScreen         = "_exit_";
+        // are we going back to an already displayed screen?
+        $isResetToPreviousPosition = false;
+
+        $ussdMenuItem = new UssdMenuItem($alternativeScreen);
+        $ussdMenuItem->setIsResetToPreviousPosition($isResetToPreviousPosition);
+        return $ussdMenuItem;
     }
 
 }
