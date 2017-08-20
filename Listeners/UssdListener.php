@@ -100,7 +100,6 @@ class UssdListener {
         if (!empty($targetLoopset)) {
             $this->initializeLoopingSession($targetLoopset);
         }
-        $this->initializeLoopingSession();
         // Override method & do your processing; save to db; etc
         $this->captureIncomingData();
         // return UssdMenuItem with pointer to the next screen
