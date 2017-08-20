@@ -2,7 +2,7 @@
 
 namespace InstantUssd\Listeners;
 
-use InstantUssd\Listeners\UssdEventListener;
+use Bitmarshals\InstantUssd\Listeners\UssdEventListener;
 
 /**
  * Description of HomeInstantUssd
