@@ -31,7 +31,7 @@ class UssdEventManager extends InstantUssdEventManager {
         $defaultListener = function($e) use ($ussdMenusConfig) {
             $continueUssdHops     = true;
             $appendNavigationText = true;
-            $listener             = new Listeners\UssdListener($e, $ussdMenusConfig);
+            $listener             = new Listeners\UssdEventListener($e, $ussdMenusConfig);
             return call_user_func([$listener, "onTrigger"], $continueUssdHops, $appendNavigationText);
         };
         // REGISTER - SELF

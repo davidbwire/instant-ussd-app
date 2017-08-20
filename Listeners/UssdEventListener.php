@@ -8,11 +8,11 @@ use Bitmarshals\InstantUssd\UssdMenuItem;
 use Bitmarshals\InstantUssd\Response;
 
 /**
- * Description of UssdListener
+ * Description of UssdEventListener
  *
  * @author David Bwire
  */
-class UssdListener {
+class UssdEventListener {
 
     /**
      *

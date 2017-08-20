@@ -2,13 +2,13 @@
 
 namespace InstantUssd\Listeners;
 
-use InstantUssd\Listeners\UssdListener;
+use InstantUssd\Listeners\UssdEventListener;
 
 /**
  * Description of HomeInstantUssd
  *
  * @author David Bwire
  */
-class HomeInstantUssd extends UssdListener {
+class HomeInstantUssd extends UssdEventListener {
     
 }
