@@ -22,11 +22,13 @@ class UssdController {
      */
     public function ussd() {
 
-        // if using a framework extract instant_ussd config from
+        // if using a framework extract config from
         // the framework's recommended config file
-        $config            = require_once './config/iussd.config.php';
-        $instantUssdConfig = $config['instant_ussd'];
-        $instantUssd       = new InstantUssd($instantUssdConfig, $this);
+        $config                          = require_once './config/iussd.config.php';
+        $ussdMenus                       = require_once './config/ussd_menus.config.php';
+        $instantUssdConfig               = $config['instant_ussd'];
+        $instantUssdConfig['ussd_menus'] = $ussdMenus;
+        $instantUssd                     = new InstantUssd($instantUssdConfig, $this);
 
         // extract as per framework or use global $_POST
         /* $_POST      = array(
