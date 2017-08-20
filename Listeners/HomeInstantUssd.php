@@ -10,5 +10,12 @@ use Bitmarshals\InstantUssd\Listeners\UssdEventListener;
  * @author David Bwire
  */
 class HomeInstantUssd extends UssdEventListener {
-    
+
+    public function captureIncomingData() {
+
+        $latestResponse = $this->latestResponse;
+        // save to db; etc
+        return;
+    }
+
 }
