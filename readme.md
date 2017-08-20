@@ -2,7 +2,9 @@
 
 ## About InstantUssd App
 
-InstantUssd is a USSD development library distributed as <code>bitmarshals/instant-ussd</code> composer package. This project recommends a file structure for incorporating <code>bitmarshals/instant-ussd</code> package to your code.
+InstantUssd is a USSD development package meant to provide you, the developer, with a set of tools to help you easily and quickly build your own USSD applications.
+
+This project (InstantUssd App) recommends a file structure for incorporating InstantUssd package to your project.
 
 InstantUssd Goals
 -----------------
