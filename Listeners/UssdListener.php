@@ -95,10 +95,30 @@ class UssdListener {
             }
             return $this->showScreen($continueUssdHops, $appendNavigationText);
         }
+        // try see if we can initialize a looping session
+        $targetLoopset = array_key_exists('target_loopset', $this->menuConfig) ? $this->menuConfig['target_loopset'] : "";
+        if (!empty($targetLoopset)) {
+            $this->initializeLoopingSession($targetLoopset);
+        }
+        $this->initializeLoopingSession();
         // Override method & do your processing; save to db; etc
         $this->captureIncomingData();
         // return UssdMenuItem with pointer to the next screen
         return $this->nextMenu();
+    }
+
+    /**
+     * Override this method and get the correct 
+     * 
+     * @param string $targetLoopset
+     */
+    protected function initializeLoopingSession($targetLoopset) {
+        $e             = $this->ussdEvent;
+        // when you override this method; use the correct value of loops required
+        $loopsRequired = $this->latestResponse;
+
+        $e->getInstantUssd()->getUssdLoopMapper()
+                ->initializeLoopingSession($targetLoopset, $e->getParam('session_id'), $loopsRequired);
     }
 
     /**
