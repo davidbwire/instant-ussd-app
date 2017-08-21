@@ -6,7 +6,7 @@ return [
     "home_instant_ussd" => [
         "title" => "Welcome to InstantUssd",
         "body" => "",
-        "footer" => "Questions? Call +254712688559",
+        "footer" => "Questions? Call +254712***559",
         "menu_items_ranking_type" => UssdMenuConfig::RANKING_TYPE_PREDETERMINED,
         "valid_keys" => range(1, 3),
         // menu_items
