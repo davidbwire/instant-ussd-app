@@ -6,16 +6,14 @@ This project recommends a file structure for incorporating [bitmarshals/instant-
 
 It also provides the quickest way to boot up a fully functional USSD application within 5 minutes or less.
 
-InstantUssd Goals
------------------
+## Goals
 
 - Speed up USSD development
 - Ease maintenance of USSD code
 
-InstantUssd Features
---------------------
+## Features
 
-- Minimal coding (Provide USSD menus as config)
+- Minimal coding (provide USSD menus as config)
 - Automatic screen to screen navigation
 - Out of the box validation of user inputs
 - Ready solutions for complex USSD flows involving going back and forth,
