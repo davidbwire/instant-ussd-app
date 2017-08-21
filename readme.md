@@ -2,9 +2,7 @@
 
 ## About InstantUssd App
 
-InstantUssd is a USSD development package meant to provide you, the developer, with a set of tools to help you easily and quickly build your own USSD applications.
-
-This project (InstantUssd App) recommends a file structure for incorporating InstantUssd package to your project.
+This project recommends a file structure for incorporating `bitmarshals/instant-ussd` composer package to your project.
 
 InstantUssd Goals
 -----------------
@@ -65,9 +63,9 @@ Import instant ussd tables from [database.sql](config/database.sql) file and the
 ## Documentation
 
 
-1. [Configuration](https://github.com/davidbwire/instant-ussd/wiki/Configuration)
-1. [Looping Menus](https://github.com/davidbwire/instant-ussd/wiki/Looping-Menus)
-1. [Capturing Incoming Data](https://github.com/davidbwire/instant-ussd/wiki/Capturing-Incoming-Data)
+1. [Configuration](https://github.com/bitmarshals/instant-ussd/wiki/Configuration)
+1. [Looping Menus](https://github.com/bitmarshals/instant-ussd/wiki/Looping-Menus)
+1. [Capturing Incoming Data](https://github.com/bitmarshals/instant-ussd/wiki/Capturing-Incoming-Data)
 
 
 ## License
