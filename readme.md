@@ -35,19 +35,15 @@ Installation
 First, clone the repository:
 
 ```bash
-# git clone https://github.com/davidbwire/instant-ussd-app.git
-$ cd path/to/install
-# remove .git directory; you no longer need it
-$ rm -Rvf .git
+$ git clone https://github.com/davidbwire/instant-ussd-app.git
 ```
 
 At this point, you need to use [Composer](https://getcomposer.org/) to install
 dependencies.
 
 ```bash
+$ cd installation/path/used
 $ php composer.phar install
-# OR
-$ composer install
 ```
 
 ### Via Composer
