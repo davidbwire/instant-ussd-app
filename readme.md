@@ -25,7 +25,9 @@ resuming timed-out USSD sessions
 Requirements
 ------------
 
-Please see the [composer.json](composer.json) file.
+PHP >=5.6
+
+Please see the [composer.json](composer.json) file for more.
 
 Installation
 ------------
@@ -35,14 +37,14 @@ Installation
 First, clone the repository:
 
 ```bash
-# git clone https://github.com/davidbwire/instant-ussd-app.git InstantUssd
+# git clone https://github.com/davidbwire/instant-ussd-app.git
 $ cd path/to/install
 # remove .git directory; you no longer need it
 $ rm -Rvf .git
 ```
 
 At this point, you need to use [Composer](https://getcomposer.org/) to install
-dependencies. Assuming you already have Composer:
+dependencies.
 
 ```bash
 $ php composer.phar install
@@ -50,7 +52,15 @@ $ php composer.phar install
 $ composer install
 ```
 
-Finally, import instant ussd tables from [database.sql](config/database.sql) file and then add database connection params to the  [config file](config/iussd.config.php).
+### Via Composer
+
+```bash
+$ composer create-project davidbwire/instant-ussd-app
+```
+
+## Configuration
+
+Import instant ussd tables from [database.sql](config/database.sql) file and then add database connection params to the  [config file](config/iussd.config.php).
 
 ## Documentation
 
@@ -62,4 +72,4 @@ Finally, import instant ussd tables from [database.sql](config/database.sql) fil
 
 ## License
 
-InstantUssd App is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT). However, it's dependent on <code>bitmarshals/instant-ussd</code> composer package which is still proprietary.
+InstantUssd App is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
