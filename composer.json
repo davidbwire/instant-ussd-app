@@ -2,6 +2,7 @@
     "name": "davidbwire/instant-ussd-app",
     "description": "Sample application using bitmarshals/instant-ussd package",
     "type": "project",
+    "license": "MIT",
     "keywords": [
         "ussd",
         "instant ussd", 
@@ -26,6 +27,6 @@
     },
     "require": {
         "php": ">=5.6.0",
-        "bitmarshals/instant-ussd": "dev-master"
+        "bitmarshals/instant-ussd": "0.1.*"
     }
 }
