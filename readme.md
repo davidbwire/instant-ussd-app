@@ -60,7 +60,7 @@ $ composer create-project davidbwire/instant-ussd-app
 
 Import instant ussd tables from [database.sql](config/database.sql) file and then add database connection params to the  [config file](config/iussd.config.php).
 
-Finally, map incoming USSD requests to http://your_domain_OR_IP/callback.php
+Finally, map incoming USSD requests to `http://your_domain_or_ip/callback.php`
 
 ## Documentation
 
