@@ -3,7 +3,7 @@
 namespace InstantUssd;
 
 use Bitmarshals\InstantUssd\InstantUssd;
-use Zend\Http\PhpEnvironment\Response;
+use Bitmarshals\InstantUssd\Response;
 use InstantUssd\UssdValidator;
 
 /**
