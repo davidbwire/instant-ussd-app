@@ -1,8 +1,10 @@
 <p align="center"><img src="https://avatars1.githubusercontent.com/u/30041331?v=4&s=80"></p>
 
-## About InstantUssd App
+## InstantUssd App
 
 This project recommends a file structure for incorporating [bitmarshals/instant-ussd](https://github.com/bitmarshals/instant-ussd) USSD library to your project.
+
+It also provides the quickest way to boot up a fully functional USSD application within 5 minutes or less.
 
 InstantUssd Goals
 -----------------
