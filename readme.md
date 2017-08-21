@@ -24,6 +24,7 @@ Requirements
 ------------
 
 PHP >=5.6
+bitmarshals/instant-ussd: 0.1.*
 
 Installation
 ------------
