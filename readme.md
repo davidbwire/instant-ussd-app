@@ -52,6 +52,14 @@ $ composer install
 
 Finally, import instant ussd tables from [database.sql](config/database.sql) file and then add database connection params to the  [config file](config/iussd.config.php).
 
+## Documentation
+
+
+1. [Configuration](https://github.com/davidbwire/instant-ussd/wiki/Configuration)
+1. [Looping Menus](https://github.com/davidbwire/instant-ussd/wiki/Looping-Menus)
+1. [Capturing Incoming Data](https://github.com/davidbwire/instant-ussd/wiki/Capturing-Incoming-Data)
+
+
 ## License
 
 InstantUssd App is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT). However, it's dependent on <code>bitmarshals/instant-ussd</code> composer package which is still proprietary.
