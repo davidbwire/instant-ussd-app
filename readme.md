@@ -25,8 +25,6 @@ Requirements
 
 PHP >=5.6
 
-Please see the [composer.json](composer.json) file for more.
-
 Installation
 ------------
 
