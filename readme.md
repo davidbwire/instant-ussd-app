@@ -2,7 +2,7 @@
 
 ## About InstantUssd App
 
-This project recommends a file structure for incorporating `bitmarshals/instant-ussd` composer package to your project.
+This project recommends a file structure for incorporating [bitmarshals/instant-ussd](https://github.com/bitmarshals/instant-ussd) USSD library to your project.
 
 InstantUssd Goals
 -----------------
@@ -25,7 +25,7 @@ Requirements
 
 PHP >=5.6
 
-bitmarshals/instant-ussd: 0.1.*
+[bitmarshals/instant-ussd:0.1.*](https://github.com/bitmarshals/instant-ussd)
 
 Installation
 ------------
