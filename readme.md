@@ -81,8 +81,8 @@ Finally, map incoming USSD requests to `http://your_domain_or_ip/callback.php`
 ## Documentation
 
 
+1. [How It Works](https://github.com/bitmarshals/instant-ussd#usage)
 1. [Configuration](https://github.com/bitmarshals/instant-ussd/wiki/Configuration)
-1. [Looping Menus](https://github.com/bitmarshals/instant-ussd/wiki/Looping-Menus)
 1. [Capturing Incoming Data](https://github.com/bitmarshals/instant-ussd/wiki/Capturing-Incoming-Data)
 
 
