@@ -30,6 +30,20 @@ PHP >=5.6
 Installation
 ------------
 
+### Via Download (easiest)
+
+Download `instant-ussd-app.zip` or `instant-ussd-app.tar.gz` from the downloads section of our [latest release](https://github.com/davidbwire/instant-ussd-app/releases).
+
+Extract the files 
+
+```bash
+$ tar -xvzf instant-ussd-app.tar.gz
+# OR
+$ unzip instant-ussd-app.zip
+```
+
+Configure database tables and connection (see below)
+
 ### Via Git (clone)
 
 First, clone the repository:
@@ -46,11 +60,17 @@ $ cd installation/path/used
 $ php composer.phar install
 ```
 
+Configure database tables and connection (see below)
+
 ### Via Composer
+
+Run
 
 ```bash
 $ composer create-project davidbwire/instant-ussd-app
 ```
+
+Configure database tables and connection (see below)
 
 ## Configuration
 
