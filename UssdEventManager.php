@@ -24,7 +24,7 @@ class UssdEventManager extends InstantUssdEventManager {
             // instantiate your CUSTOM listener class
             $listener             = new Listeners\HomeInstantUssd($e, $ussdMenusConfig);
             $continueUssdHops     = true;
-            $appendNavigationText = true;
+            $appendNavigationText = false;
             // TRIGGER IT
             return call_user_func([$listener, "onTrigger"], $continueUssdHops, $appendNavigationText);
         });
