@@ -4,7 +4,7 @@
 
 This project recommends a file structure for incorporating [bitmarshals/instant-ussd](https://github.com/bitmarshals/instant-ussd) USSD library to your project.
 
-It also provides the quickest way to boot up a fully functional USSD application within 5 minutes or less.
+It also provides the quickest way to boot up a fully functional USSD application within 3 minutes or less.
 
 ## Goals
 
