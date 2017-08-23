@@ -25,6 +25,12 @@
             "InstantUssd\\": "./"
         }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:davidbwire/instant-ussd.git"
+        }
+    ],
     "require": {
         "php": ">=5.6.0",
         "bitmarshals/instant-ussd": "0.1.*"
