@@ -42,7 +42,7 @@ $ tar -xvzf instant-ussd-app.tar.gz
 $ unzip instant-ussd-app.zip
 ```
 
-Configure database tables and connection (see below)
+Configure database tables and connection ([see below](https://github.com/davidbwire/instant-ussd-app#configuration))
 
 ### Via Git (clone)
 
@@ -60,7 +60,7 @@ $ cd installation/path/used
 $ php composer.phar install
 ```
 
-Configure database tables and connection (see below)
+Configure database tables and connection ([see below](https://github.com/davidbwire/instant-ussd-app#configuration))
 
 ### Via Composer
 
@@ -70,7 +70,7 @@ Run
 $ composer create-project davidbwire/instant-ussd-app
 ```
 
-Configure database tables and connection (see below)
+Configure database tables and connection ([see below](https://github.com/davidbwire/instant-ussd-app#configuration))
 
 ## Configuration
 
