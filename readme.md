@@ -46,7 +46,7 @@ $ cd installation/path/used
 $ php composer.phar install
 ```
 
-Configure database tables and connection (see below)
+Configure database tables and connection ([see below](#configuration))
 
 ### Via Composer
 
@@ -56,7 +56,7 @@ Run
 $ composer create-project davidbwire/instant-ussd-app
 ```
 
-Configure database tables and connection (see below)
+Configure database tables and connection ([see below](#configuration))
 
 ## Configuration
 
