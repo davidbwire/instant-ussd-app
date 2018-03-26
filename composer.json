@@ -27,6 +27,6 @@
     },
     "require": {
         "php": ">=5.6.0",
-        "bitmarshals/instant-ussd": "0.0.1"
+        "bitmarshals/instant-ussd": "0.1.7"
     }
 }
