@@ -19,7 +19,7 @@
             "role": "Developer"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "InstantUssd\\": "./"
@@ -27,6 +27,6 @@
     },
     "require": {
         "php": ">=5.6.0",
-        "bitmarshals/instant-ussd": "0.1.*"
+        "bitmarshals/instant-ussd": "0.0.1"
     }
 }
