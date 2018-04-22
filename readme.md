@@ -30,24 +30,6 @@ PHP >=5.6
 Installation
 ------------
 
-### Via Git (clone)
-
-First, clone the repository:
-
-```bash
-$ git clone https://github.com/davidbwire/instant-ussd-app.git
-```
-
-At this point, you need to use [Composer](https://getcomposer.org/) to install
-dependencies.
-
-```bash
-$ cd installation/path/used
-$ php composer.phar install
-```
-
-Configure database tables and connection ([see below](#configuration))
-
 ### Via Composer
 
 Run
